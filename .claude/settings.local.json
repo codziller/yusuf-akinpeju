@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "WebFetch(domain:austinstubbs.dev)",
+      "Bash(dir /s /b \"C:\\Users\\HP\\Documents\\Resumes & Cover Letters\\thekodezilla portfolio\\src\")",
+      "Bash(dir /b \"C:\\Users\\HP\\Documents\\Resumes & Cover Letters\\thekodezilla portfolio\")",
+      "Bash(ls:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm install:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
