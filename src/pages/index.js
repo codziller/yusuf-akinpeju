@@ -1,37 +1,38 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Head from 'next/head';
-import { AnimatePresence, motion } from 'framer-motion';
-import Header from 'components/portfolio/Header';
-import ExperienceCard from 'components/portfolio/ExperienceCard';
-import ArticleCard from 'components/portfolio/ArticleCard';
-import MouseTrail from 'components/portfolio/MouseTrail';
-import SocialProofModal from 'components/portfolio/SocialProofModal';
-import SectionToggle from 'components/portfolio/SectionToggle';
-import { allExperiences } from 'data/experiences';
-import { articles } from 'data/articles';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import Head from "next/head";
+import { AnimatePresence, motion } from "framer-motion";
+import Header from "components/portfolio/Header";
+import ExperienceCard from "components/portfolio/ExperienceCard";
+import ArticleCard from "components/portfolio/ArticleCard";
+import MouseTrail from "components/portfolio/MouseTrail";
+import SocialProofModal from "components/portfolio/SocialProofModal";
+import SectionToggle from "components/portfolio/SectionToggle";
+import { allExperiences } from "data/experiences";
+import { articles } from "data/articles";
 
 export default function Portfolio() {
   const router = useRouter();
   const [jazzEnabled, setJazzEnabled] = useState(false);
   const [showSocialModal, setShowSocialModal] = useState(false);
-  const [currentSection, setCurrentSection] = useState('experience');
+  const [currentSection, setCurrentSection] = useState("experience");
 
   useEffect(() => {
-    if (router.query.section === 'thoughts') {
-      setCurrentSection('thoughts');
+    if (router.query.section === "thoughts") {
+      setCurrentSection("thoughts");
     }
   }, [router.query.section]);
 
   const handleToggleSection = () => {
-    const newSection = currentSection === 'experience' ? 'thoughts' : 'experience';
+    const newSection =
+      currentSection === "experience" ? "thoughts" : "experience";
     setCurrentSection(newSection);
 
     // Update URL query parameter
-    if (newSection === 'thoughts') {
-      router.push('/?section=thoughts', undefined, { shallow: true });
+    if (newSection === "thoughts") {
+      router.push("/?section=thoughts", undefined, { shallow: true });
     } else {
-      router.push('/', undefined, { shallow: true });
+      router.push("/", undefined, { shallow: true });
     }
   };
 
@@ -50,7 +51,7 @@ export default function Portfolio() {
     }),
   };
 
-  const direction = currentSection === 'thoughts' ? 1 : -1;
+  const direction = currentSection === "thoughts" ? 1 : -1;
 
   return (
     <>
@@ -61,13 +62,19 @@ export default function Portfolio() {
           content="Software Engineer with over 8 years of experience building scalable, performant, and secure web and mobile platforms."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Yusuf Akinpeju - Fullstack Engineer" />
+        <meta
+          property="og:title"
+          content="Yusuf Akinpeju - Fullstack Engineer"
+        />
         <meta
           property="og:description"
           content="Software Engineer with over 8 years of experience building scalable, performant, and secure web and mobile platforms."
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Yusuf Akinpeju - Fullstack Engineer" />
+        <meta
+          name="twitter:title"
+          content="Yusuf Akinpeju - Fullstack Engineer"
+        />
         <meta
           name="twitter:description"
           content="Software Engineer with over 8 years of experience building scalable, performant, and secure web and mobile platforms."
@@ -94,9 +101,9 @@ export default function Portfolio() {
 
         {/* Add padding to account for fixed header */}
         <div className="pt-20 md:pt-20">
-          <main className="max-w-5xl mx-auto px-8 py-12 overflow-hidden">
+          <main className="max-w-5xl mx-auto px-4 md:px-8 py-12 overflow-hidden">
             <AnimatePresence initial={false} custom={direction} mode="wait">
-              {currentSection === 'experience' ? (
+              {currentSection === "experience" ? (
                 <motion.section
                   key="experience"
                   custom={direction}
@@ -105,7 +112,7 @@ export default function Portfolio() {
                   animate="center"
                   exit="exit"
                   transition={{
-                    x: { type: 'spring', stiffness: 300, damping: 30 },
+                    x: { type: "spring", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.2 },
                   }}
                 >
@@ -129,7 +136,7 @@ export default function Portfolio() {
                   animate="center"
                   exit="exit"
                   transition={{
-                    x: { type: 'spring', stiffness: 300, damping: 30 },
+                    x: { type: "spring", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.2 },
                   }}
                 >
