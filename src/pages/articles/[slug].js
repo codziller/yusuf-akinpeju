@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import { marked } from 'marked';
-import hljs from 'highlight.js';
-import Header from 'components/portfolio/Header';
-import MouseTrail from 'components/portfolio/MouseTrail';
-import SocialProofModal from 'components/portfolio/SocialProofModal';
-import CommentForm from 'components/portfolio/CommentForm';
-import { articles } from 'data/articles';
-import 'highlight.js/styles/github.css';
+import { useState, useEffect } from "react";
+import Head from "next/head";
+import Link from "next/link";
+import { marked } from "marked";
+import hljs from "highlight.js";
+import Header from "components/portfolio/Header";
+import MouseTrail from "components/portfolio/MouseTrail";
+import SocialProofModal from "components/portfolio/SocialProofModal";
+import CommentForm from "components/portfolio/CommentForm";
+import { articles } from "data/articles";
+import "highlight.js/styles/github.css";
 
 // Configure marked
 marked.setOptions({
-  highlight: function(code, lang) {
+  highlight: function (code, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
         return hljs.highlight(code, { language: lang }).value;
@@ -21,16 +21,15 @@ marked.setOptions({
     return hljs.highlightAuto(code).value;
   },
   breaks: true,
-  gfm: true
+  gfm: true,
 });
 
 export default function ArticleDetail({ article }) {
-  const [jazzEnabled, setJazzEnabled] = useState(false);
   const [showSocialModal, setShowSocialModal] = useState(false);
 
   useEffect(() => {
     // Highlight code blocks after component mounts
-    document.querySelectorAll('pre code').forEach((block) => {
+    document.querySelectorAll("pre code").forEach((block) => {
       hljs.highlightElement(block);
     });
   }, [article]);
@@ -49,59 +48,58 @@ export default function ArticleDetail({ article }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <MouseTrail enabled={jazzEnabled} />
+      <MouseTrail enabled={true} />
       <SocialProofModal
         isOpen={showSocialModal}
         onClose={() => setShowSocialModal(false)}
       />
 
       <div className="min-h-screen bg-white">
-        <Header
-          jazzEnabled={jazzEnabled}
-          setJazzEnabled={setJazzEnabled}
-          onSocialProofClick={() => setShowSocialModal(true)}
-        />
+        <Header onSocialProofClick={() => setShowSocialModal(true)} />
 
         {/* Add padding to account for fixed header */}
         <div className="pt-20 md:pt-20">
           <main className="max-w-4xl mx-auto px-8 py-12">
-          <Link href="/?section=thoughts" className="text-grey-text hover:text-black mb-8 inline-block">
-            ← Back to thought corner
-          </Link>
+            <Link
+              href="/"
+              className="text-grey-text hover:text-black mb-8 inline-block"
+            >
+              ← Back to thought corner
+            </Link>
 
-          <article className="mt-8">
-            <header className="mb-8">
-              <h1 className="text-4xl font-bold mb-4">{article.title}</h1>
-              <p className="text-grey-text mb-4">{article.description}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {article.tags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1 bg-grey-whitesmoke border border-grey-border rounded-full text-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
+            <article className="mt-8">
+              <header className="mb-8">
+                <h1 className="text-4xl font-bold mb-4">{article.title}</h1>
+                <p className="text-grey-text mb-4">{article.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {article.tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 bg-grey-whitesmoke border border-grey-border rounded-full text-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <time className="text-grey-text2 text-sm">
+                  {new Date(article.publishedDate).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+              </header>
+
+              <div className="prose prose-lg max-w-none">
+                <div
+                  className="article-content leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: htmlContent }}
+                />
               </div>
-              <time className="text-grey-text2 text-sm">
-                {new Date(article.publishedDate).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
-            </header>
+            </article>
 
-            <div className="prose prose-lg max-w-none">
-              <div
-                className="article-content leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: htmlContent }}
-              />
-            </div>
-          </article>
-
-          <CommentForm articleTitle={article.title} />
-        </main>
+            <CommentForm articleTitle={article.title} />
+          </main>
         </div>
       </div>
 
@@ -142,7 +140,7 @@ export default function ArticleDetail({ article }) {
           margin-bottom: 1rem;
         }
         .article-content code {
-          font-family: 'Courier New', Courier, monospace;
+          font-family: "Courier New", Courier, monospace;
           font-size: 0.9em;
           background-color: #f4f4f4;
           padding: 0.2em 0.4em;
@@ -158,7 +156,7 @@ export default function ArticleDetail({ article }) {
           margin: 1.5rem 0;
         }
         .article-content pre code {
-          font-family: 'Courier New', Courier, monospace;
+          font-family: "Courier New", Courier, monospace;
           font-size: 0.875rem;
           line-height: 1.5;
           background-color: transparent;

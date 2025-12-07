@@ -1,17 +1,5 @@
 export const articles = [
   {
-    id: 1,
-    title: "Exploring an AI-Powered Support Desk Built with Rails and Hotwire",
-    slug: "ai-powered-support-desk-rails-hotwire",
-    description:
-      "An idea to build a lightweight AI-driven support desk using Rails, Hotwire, background jobs, and an LLM client; focusing on multi-tenant workspaces, real-time ticket updates, and automated ticket summarisation for a modern support workflow.",
-    tags: ["Rails", "Hotwire", "AI", "Background Jobs", "LLM", "PostgreSQL"],
-    image: null,
-    publishedDate: "2025-12-03",
-    content: ``,
-    url: "https://github.com/codziller/ai_support_desk",
-  },
-  {
     id: 2,
     title:
       "Building an Embeddable Payment Checkout Widget with Preact and TypeScript",
@@ -741,8 +729,21 @@ Happy coding!
     `.trim(),
   },
 
+  {
+    id: 2,
+    title: "Exploring an AI-Powered Support Desk Built with Rails and Hotwire",
+    slug: "ai-powered-support-desk-rails-hotwire",
+    description:
+      "An idea to build a lightweight AI-driven support desk using Rails, Hotwire, background jobs, and an LLM client; focusing on multi-tenant workspaces, real-time ticket updates, and automated ticket summarisation for a modern support workflow.",
+    tags: ["Rails", "Hotwire", "AI", "Background Jobs", "LLM", "PostgreSQL"],
+    image: null,
+    publishedDate: "2025-12-03",
+    content: ``,
+    url: "https://github.com/codziller/ai_support_desk",
+  },
+
   //   {
-  //     id: 2,
+  //     id: 1,
   //     title: "Building Scalable Microservices with Node.js and GraphQL",
   //     slug: "building-scalable-microservices-nodejs-graphql",
   //     description:
@@ -751,31 +752,31 @@ Happy coding!
   //     image: null,
   //     publishedDate: "2024-11-15",
   //     content: `
-  // # Building Scalable Microservices with Node.js and GraphQL
+  //   # Building Scalable Microservices with Node.js and GraphQL
 
-  // Microservices architecture has become the de facto standard for building scalable applications. In this article, I'll share insights from building POS tools at Bani Africa.
+  //   Microservices architecture has become the de facto standard for building scalable applications. In this article, I'll share insights from building POS tools at Bani Africa.
 
-  // ## Why Microservices?
+  //   ## Why Microservices?
 
-  // Microservices allow teams to develop, deploy, and scale services independently...
+  //   Microservices allow teams to develop, deploy, and scale services independently...
 
-  // ## GraphQL vs REST
+  //   ## GraphQL vs REST
 
-  // GraphQL provides several advantages over traditional REST APIs:
-  // - Single endpoint for all data requirements
-  // - Strong typing
-  // - Efficient data fetching
+  //   GraphQL provides several advantages over traditional REST APIs:
+  //   - Single endpoint for all data requirements
+  //   - Strong typing
+  //   - Efficient data fetching
 
-  // ## Best Practices
+  //   ## Best Practices
 
-  // 1. **Service Isolation**: Each microservice should be independently deployable
-  // 2. **API Gateway**: Use an API gateway to manage cross-cutting concerns
-  // 3. **Data Ownership**: Each service owns its data
+  //   1. **Service Isolation**: Each microservice should be independently deployable
+  //   2. **API Gateway**: Use an API gateway to manage cross-cutting concerns
+  //   3. **Data Ownership**: Each service owns its data
 
-  // ## Conclusion
+  //   ## Conclusion
 
-  // Building microservices requires careful planning and the right tools. Node.js and GraphQL provide an excellent foundation for scalable systems.
-  //     `.trim(),
+  //   Building microservices requires careful planning and the right tools. Node.js and GraphQL provide an excellent foundation for scalable systems.
+  //       `.trim(),
   //   },
   //   {
   //     id: 3,

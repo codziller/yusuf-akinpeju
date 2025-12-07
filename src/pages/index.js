@@ -13,12 +13,13 @@ import { articles } from "data/articles";
 
 export default function Portfolio() {
   const router = useRouter();
-  const [jazzEnabled, setJazzEnabled] = useState(false);
   const [showSocialModal, setShowSocialModal] = useState(false);
-  const [currentSection, setCurrentSection] = useState("experience");
+  const [currentSection, setCurrentSection] = useState("thoughts");
 
   useEffect(() => {
-    if (router.query.section === "thoughts") {
+    if (router.query.section === "experience") {
+      setCurrentSection("experience");
+    } else {
       setCurrentSection("thoughts");
     }
   }, [router.query.section]);
@@ -28,9 +29,12 @@ export default function Portfolio() {
       currentSection === "experience" ? "thoughts" : "experience";
     setCurrentSection(newSection);
 
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     // Update URL query parameter
-    if (newSection === "thoughts") {
-      router.push("/?section=thoughts", undefined, { shallow: true });
+    if (newSection === "experience") {
+      router.push("/?section=experience", undefined, { shallow: true });
     } else {
       router.push("/", undefined, { shallow: true });
     }
@@ -82,7 +86,7 @@ export default function Portfolio() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <MouseTrail enabled={jazzEnabled} />
+      <MouseTrail enabled={true} />
       <SocialProofModal
         isOpen={showSocialModal}
         onClose={() => setShowSocialModal(false)}
@@ -93,14 +97,10 @@ export default function Portfolio() {
       />
 
       <div className="min-h-screen bg-white">
-        <Header
-          jazzEnabled={jazzEnabled}
-          setJazzEnabled={setJazzEnabled}
-          onSocialProofClick={() => setShowSocialModal(true)}
-        />
+        <Header onSocialProofClick={() => setShowSocialModal(true)} />
 
         {/* Add padding to account for fixed header */}
-        <div className="pt-20 md:pt-20">
+        <div className="pt-14 md:pt-16">
           <main className="max-w-5xl mx-auto px-4 md:px-8 py-12 overflow-hidden">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               {currentSection === "experience" ? (
